@@ -1,8 +1,11 @@
 var {setWorldConstructor} = require('cucumber');
 var seleniumWebdriver = require('selenium-webdriver');
+
+
 require('chromedriver');
 var chrome = require ('selenium-webdriver/chrome')
 var {defineSupportCode} = require('cucumber');
+var {setDefaultTimeout} = require('cucumber');
 
 function CustomWorld() {
  this.driver = new seleniumWebdriver.Builder()
@@ -14,6 +17,6 @@ function CustomWorld() {
   defineSupportCode(function({setWorldConstructor})
 
   {
-  	setWorldConstructor(CustomWorld);
-    
+  	setWorldConstructor(CustomWorld)
+    setDefaultTimeout(60 * 1000)
   });
